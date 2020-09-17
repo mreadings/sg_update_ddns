@@ -1,0 +1,46 @@
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeSecurityGroups",
+                "ec2:DescribeStaleSecurityGroups"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "VisualEditor1",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:UpdateSecurityGroupRuleDescriptionsEgress",
+                "logs:CreateLogGroup",
+                "ec2:UpdateSecurityGroupRuleDescriptionsIngress"
+            ],
+            "Resource": [
+                "arn:aws:ec2:*:xxxx:security-group/sg-xxxxx",
+                "arn:aws:logs:eu-west-1:xxxx:*"
+            ]
+        },
+        {
+            "Sid": "VisualEditor2",
+            "Effect": "Allow",
+            "Action": [
+                "ec2:RevokeSecurityGroupIngress",
+                "logs:CreateLogStream",
+                "logs:PutLogEvents"
+            ],
+            "Resource": [
+                "arn:aws:logs:eu-west-1:xxxx:log-group:/aws/lambda/UpdateDynamicDNS:*",
+                "arn:aws:ec2:*:xxxxx:security-group/sg-xxxxx"
+            ]
+        },
+        {
+            "Sid": "VisualEditor3",
+            "Effect": "Allow",
+            "Action": "ec2:AuthorizeSecurityGroupIngress",
+            "Resource": "arn:aws:ec2:*:xxxx:security-group/sg-xxxx"
+        }
+    ]
+}
